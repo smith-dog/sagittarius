@@ -1,0 +1,23 @@
+package com.hunter.sagittarius.service.factory;
+
+
+import com.hunter.sagittarius.service.bean.IdMeta;
+import com.hunter.sagittarius.service.bean.IdType;
+
+public class IdMetaFactory {
+
+    //最高并发
+    private static IdMeta maxPeak = new IdMeta((byte) 10, (byte) 20, (byte) 30, (byte) 2, (byte) 1, (byte) 1);
+
+    //最小粒度
+    private static IdMeta minGranularity = new IdMeta((byte) 10, (byte) 10, (byte) 40, (byte) 2, (byte) 1, (byte) 1);
+
+    public static IdMeta getIdMeta(IdType type) {
+        if (IdType.SECONDS.equals(type)) {
+            return maxPeak;
+        } else if (IdType.MILLISECONDS.equals(type)) {
+            return minGranularity;
+        }
+        return null;
+    }
+}

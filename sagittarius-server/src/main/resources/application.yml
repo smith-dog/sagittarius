@@ -1,0 +1,18 @@
+server:
+  port: 8760
+eureka:
+  instance:
+    hostname: localhost
+    prefer-ip-address: true
+    instance-id: ${eureka.instance.hostname}:${server.port}
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8760/eureka/
+  server:
+    enable-self-preservation: false
+    #«Â¿Ìº‰∏Ù
+    eviction-interval-timer-in-ms: 2000
+
+spring:
+  application:
+    name: sagittarius-server
